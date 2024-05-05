@@ -14,17 +14,17 @@ import { useSpring, animated } from '@react-spring/web';
 function Login() {
 
   /*------------------------------------ STATES ------------------------------------*/
-    // Define la animación para la entrada del aside
-    const asideAnimation = useSpring({
-      from: { opacity: 0, transform: 'translateX(-100%)' },
-      to: { opacity: 1, transform: 'translateX(0)' },
-    });
-    const [formData, setFormData] = useState({
-    
-      Email: '',
-      Password: ''
-   
-    });
+  // Define la animación para la entrada del aside
+  const asideAnimation = useSpring({
+    from: { opacity: 0, transform: 'translateX(-100%)' },
+    to: { opacity: 1, transform: 'translateX(0)' },
+  });
+  const [formData, setFormData] = useState({
+
+    Email: '',
+    Password: ''
+
+  });
 
   /*------------------------------------ NAVEGACIÓN------------------------------------*/
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ function Login() {
     navigate('/Home');
   }
 
-    const handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -61,7 +61,7 @@ function Login() {
         return;
       }
     }
-  
+
     //verificar si el correo ya existe
     try {
       const response = await axios.post(backenURL + '/api/login/', formData);
@@ -106,7 +106,7 @@ function Login() {
       }
     }
   };
-  
+
   /*------------------------------------ RENDER ------------------------------------*/
   return (
     <body className='bodyApp'>
@@ -114,21 +114,21 @@ function Login() {
         <img src={logo} alt="Logo" className="logoLogin" />
         <p className='parrafo'>Para continuar, por favor identifícate...</p>
         <div className="containerTitulo">
-          <div className="line"></div>
+          
           <h2 className='TITLE-Login'>Inicia Sesión</h2>
-          <div className="line"></div>
+     
         </div>
         {Object.keys(formData).map((key) => (
-  <input
-    key={key}
-    type={key === 'Password' ? 'password' : 'text'} // Establecer el tipo de input como 'password' si la clave es 'Password'
-    className='inputLogin'
-    placeholder={key.replace(/([A-Z])/g, ' $1').trim()} // Transforma CamelCase a palabras separadas
-    name={key}
-    value={formData[key]}
-    onChange={handleChange}
-  />
-))}
+          <input
+            key={key}
+            type={key === 'Password' ? 'password' : 'text'} // Establecer el tipo de input como 'password' si la clave es 'Password'
+            className='inputLogin'
+            placeholder={key.replace(/([A-Z])/g, ' $1').trim()} // Transforma CamelCase a palabras separadas
+            name={key}
+            value={formData[key]}
+            onChange={handleChange}
+          />
+        ))}
 
         <p className='parrafo'>¿Olvidaste tu contraseña?</p>
         <div className="containerCrearCuenta"><p className='parrafo'>¿No tienes cuenta?  </p><p className='RegistrateAqui' onClick={handleCreateCuenta}>Registrate aquí</p></div>

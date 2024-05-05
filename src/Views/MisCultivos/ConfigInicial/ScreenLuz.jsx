@@ -45,6 +45,7 @@ function ScreenLuzConfig() {
     useEffect(() => {
         // Aquí puedes colocar cualquier lógica que necesites
         // Por ejemplo, verificar si el usuario tiene permisos para estar en esta vista
+        console.log('valorLuz', valorLuz)
     }, [navigate]);
 
     // Función para manejar el envío del formulario
@@ -56,7 +57,10 @@ function ScreenLuzConfig() {
     };
 
     const goToCicloLuz = () => {
-        setLuzParameters(uid, cultivo_id, valorLuz);
+        //valorLuz a integer
+        //valorLuz = parseInt(valorLuz);
+        const LUZ = parseFloat(valorLuz);
+        setLuzParameters(uid, cultivo_id, LUZ);
         navigate('/Settings/LightCycle');
     };
 

@@ -80,7 +80,8 @@ function ScreenConfigPh() {
     };
 
     const goToTemp = () => {
-        setPhParameters(uid, cultivo_id, valorPh);
+        const PH = parseFloat(valorPh);
+        setPhParameters(uid, cultivo_id, PH);
         navigate('/Settings/Temperature');
     };
 
@@ -131,8 +132,8 @@ function ScreenConfigPh() {
 
                         </div>
                         <div className="containerCicloBottomSettings">
-                        <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Por ahora no</button>
-                            <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Claro</button>
+                        <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Omitir</button>
+                            <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Siguiente</button>
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ function ScreenConfigTemp() {
         // Obtener una referencia a la base de datos de Firebase
         const db = getDatabase();
         // Referencia al nodo específico en la base de datos donde deseas escribir los datos
-        const TempRef = ref(db, 'BioharvestApp/Usuarios/' + UID +  '/Fotobiorreactores/'+ CID+'/Parameters/Temperature');
+        const TempRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/Parameters/Temperature');
         // Datos que deseas almacenar en el nodo del cultivo
         const TempData = {
             Temperature: valor
@@ -66,6 +66,7 @@ function ScreenConfigTemp() {
         // Intentar establecer los datos en la base de datos
         set(TempRef, valor)
             .then(() => {
+                setSensores(UID, CID);
                 console.log('Datos del cultivo escritos correctamente.');
             })
             .catch((error) => {
@@ -73,11 +74,38 @@ function ScreenConfigTemp() {
                 // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
             });
 
-            //createFotoBiorreactor(UID, "sxnxj");
+        //createFotoBiorreactor(UID, "sxnxj");
+    };
+
+    const setSensores = (UID, CID) => {
+
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const TempRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/SensoresRealtime/SensorTemperature');
+        // Datos que deseas almacenar en el nodo del cultivo
+        /*const SensoresRealtime = {
+            SensorTemperature: 0.0,
+            SensorLight: 0.0,
+            SensorPh: 0.0
+        };
+*/
+        // Intentar establecer los datos en la base de datos
+        set(TempRef, 0)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+        //createFotoBiorreactor(UID, "sxnxj");
     };
 
     const goToTemp = () => {
-        setTempParameters(uid, cultivo_id, valorTemp);
+        const TEMP = parseFloat(valorTemp);
+        setTempParameters(uid, cultivo_id, TEMP);
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
@@ -103,6 +131,7 @@ function ScreenConfigTemp() {
             showConfirmButton: false,
             timer: 1500
         }).then(() => {
+            
             navigate('/MisCepas');
         });
     };
@@ -138,8 +167,9 @@ function ScreenConfigTemp() {
 
                         </div>
                         <div className="containerCicloBottomSettings">
-                            <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Por ahora no</button>
+                            <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Omitir</button>
                             <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Claro</button>
+                            <button className="btnFormAddCepa" id='aceptar' onClick={() => setSensores(uid, cultivo_id)}>Sensores</button>
                         </div>
                     </div>
                 </div>

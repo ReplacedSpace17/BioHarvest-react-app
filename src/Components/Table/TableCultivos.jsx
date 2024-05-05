@@ -7,7 +7,7 @@ function TableCultivos({ data }) {
 
     // Filtrar los datos por el nombre
     const filteredData = data.filter(item =>
-        item.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
+        item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
     );
     
 
@@ -42,12 +42,12 @@ function TableCultivos({ data }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.map((item) => (
+                        {filteredData.map((item, index) => (
                             <tr className='trT2' key={item.ID}>
-                                <td className='tdT2'>{item.ID}</td>
-                                <td className='tdT2'>{item.Nombre}</td>
-                                <td className='tdT2'>{item.Especie}</td>
-                                <td className='tdT2'>{item.Motivo}</td>
+                                <td className='tdT2'>{index +1}</td>
+                                <td className='tdT2'>{item.nombre}</td>
+                                <td className='tdT2'>{item.nombre_cepa}</td>
+                                <td className='tdT2'>{item.motivo}</td>
                             </tr>
                         ))}
                     </tbody>

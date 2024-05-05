@@ -8,7 +8,7 @@ function Table({ data }) {
 
     // Filtrar los datos por el nombre
     const filteredData = data.filter(item =>
-        item.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
+        item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const navigate = useNavigate();
@@ -33,19 +33,20 @@ function Table({ data }) {
                 <table className='tableT1'>
                     <thead className='theadT1'>
                         <tr className='trT1'>
-                            <th className='thdT1'>ID</th>
+                        <th className='thdT1'>ID</th>
                             <th className='thdT1'>Nombre</th>
                             <th className='thdT1'>Origen</th>
                             <th className='thdT1'>Medio</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.map((item) => (
-                            <tr className='trT1' key={item.ID}>
-                                <td className='tdT1'>{item.ID}</td>
-                                <td className='tdT1'>{item.Nombre}</td>
-                                <td className='tdT1'>{item.Origen}</td>
-                                <td className='tdT1'>{item.Medio}</td>
+                    {filteredData.map((item, index) => (
+                            <tr className='trT1' key={item.id}>
+                                <td className='tdT1'>{index + 1}</td>
+                                <td className='tdT1'>{item.nombre}</td>
+                                <td className='tdT1'>{item.origen}</td>
+                                <td className='tdT1'>{item.medio}</td>
+                         
                             </tr>
                         ))}
                     </tbody>

@@ -83,6 +83,12 @@ function ScreenConfigTemp() {
         const db = getDatabase();
         // Referencia al nodo específico en la base de datos donde deseas escribir los datos
         const TempRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/SensoresRealtime/SensorTemperature');
+        const LightRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/SensoresRealtime/SensorLight');
+        const PhRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/SensoresRealtime/SensorPh');
+
+        //crear buckets de constrol
+        const BombaRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/ControlBiorreactor/Bomba');
+        const LuzRef = ref(db, 'BioharvestApp/Usuarios/' + UID + '/Fotobiorreactores/' + CID + '/ControlBiorreactor/Lampara');
         // Datos que deseas almacenar en el nodo del cultivo
         /*const SensoresRealtime = {
             SensorTemperature: 0.0,
@@ -99,6 +105,42 @@ function ScreenConfigTemp() {
                 console.error('Error al escribir datos del cultivo:', error);
                 // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
             });
+        set(LightRef, 0)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+        set(PhRef, 0)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+        //// buckets de control
+        set(BombaRef, false)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+        set(LuzRef, false)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+
 
         //createFotoBiorreactor(UID, "sxnxj");
     };
@@ -131,7 +173,7 @@ function ScreenConfigTemp() {
             showConfirmButton: false,
             timer: 1500
         }).then(() => {
-            
+
             navigate('/MisCepas');
         });
     };
@@ -169,7 +211,7 @@ function ScreenConfigTemp() {
                         <div className="containerCicloBottomSettings">
                             <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Omitir</button>
                             <button className="btnFormAddCepa" id='aceptar' onClick={goToTemp}>Claro</button>
-                            <button className="btnFormAddCepa" id='aceptar' onClick={() => setSensores(uid, cultivo_id)}>Sensores</button>
+
                         </div>
                     </div>
                 </div>

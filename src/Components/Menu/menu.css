@@ -51,3 +51,6 @@
     background-color: #E4F0FF;
     border-radius: 10px;
 }
+.option:active{
+    scale: 0.9;
+}

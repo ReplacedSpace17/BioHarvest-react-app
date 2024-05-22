@@ -351,10 +351,10 @@ const [temperaturaHome, setTemperaturaHome] = useState(0);
                                 temperatura={temperatura}
                                 ph={ph}
                                 getControl_IA ={true} 
-                                getBomba={true}
-                                getLuz={true}
-                                getPh={3.3}
-                                getTemperatura={25}
+                                getBomba={false}
+                                getLuz={false}
+                                getPh={6}
+                                getTemperatura={24}
                             />
                             </div>
                         </div>

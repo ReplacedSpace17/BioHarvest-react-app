@@ -1,0 +1,76 @@
+
+/* Estilo para el contenedor */
+.containerDeslizable {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    
+    
+}
+.containerSlideParametros{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    
+}
+
+/* Ocultar el checkbox original */
+.switch input {
+    cursor: pointer;
+    display: none;
+}
+
+/* Estilo para el interruptor */
+.slider {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* El círculo deslizante */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Fondo del interruptor */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Estilo cuando el checkbox está seleccionado */
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+/* Mover el círculo deslizante cuando el checkbox está seleccionado */
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Estilo cuando el checkbox no está seleccionado */
+.slider {
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.textInput{
+    margin: 15px;
+}

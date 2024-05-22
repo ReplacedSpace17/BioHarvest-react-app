@@ -6,13 +6,14 @@ import { getDatabase, ref, set, update } from 'firebase/database';
 import Header from '../../Components/Header/Header.jsx';
 import Menu from '../../Components/Menu/Menu.jsx';
 import backenURL from '../../backend.js';
+import './parametros.css'
 
 function ParametrosCultivo() {
     const [cepas, setCepas] = useState([]);
     const [controlIA, setControlIA] = useState(false);
     const [agitacion, setAgitacion] = useState(false);
     const [iluminacion, setIluminacion] = useState(false);
-    const [ph, setPh] = useState(0); 
+    const [ph, setPh] = useState(0);
     const [temperatura, setTemperatura] = useState(0);
 
     const navigate = useNavigate();
@@ -95,7 +96,7 @@ function ParametrosCultivo() {
                         <h1 className="titleAddCepa">Parámetros de cultivo</h1>
                         <p className="textAddCepa">Por favor ingresa la información</p>
                         <form className="formAddCepa" onSubmit={setParametersFirebase}>
-                            <div className="containerInputAddCepa">
+                            <div className="containerDeslizable" >
                                 <label className="switch">
                                     <input type="checkbox" checked={controlIA} onChange={() => setControlIA(!controlIA)} />
                                     <span className="slider round"></span>
@@ -103,12 +104,16 @@ function ParametrosCultivo() {
                                 <span className="textInput">Control por IA</span>
                             </div>
 
-                            <div className="containerInputAddCepa">
+                            <div className="containerDeslizable" >
                                 <label className="switch">
                                     <input type="checkbox" checked={agitacion} onChange={() => setAgitacion(!agitacion)} />
                                     <span className="slider round"></span>
                                 </label>
                                 <span className="textInput">Agitación</span>
+                            </div>
+
+                            <div className="containerDeslizable">
+
 
                                 <label className="switch">
                                     <input type="checkbox" checked={iluminacion} onChange={() => setIluminacion(!iluminacion)} />
@@ -117,21 +122,20 @@ function ParametrosCultivo() {
                                 <span className="textInput">Iluminación</span>
                             </div>
 
-                            <div className="containerInputAddCepa">
-                                <div>
-                                    <h1 className='ValueLight'>{ph} pH</h1>
-                                    <input
-                                        type="range"
-                                        id="ph"
-                                        min="0"
-                                        max="14"
-                                        step="0.1"
-                                        value={ph}
-                                        onChange={(e) => setPh(parseFloat(e.target.value))}
-                                    />
-                                </div>
-                                
-                                <div>
+                            <div className="containerSlideParametros">
+
+                                <h1 className='ValueLight'>{ph} pH</h1>
+                                <input
+                                    type="range"
+                                    id="ph"
+                                    min="0"
+                                    max="14"
+                                    step="0.1"
+                                    value={ph}
+                                    onChange={(e) => setPh(parseFloat(e.target.value))}
+                                />
+                            </div>
+                            <div className="containerSlideParametros">
                                     <h1 className='ValueLight'>{temperatura} °C</h1>
                                     <input
                                         type="range"
@@ -142,7 +146,7 @@ function ParametrosCultivo() {
                                         value={temperatura}
                                         onChange={(e) => setTemperatura(parseFloat(e.target.value))}
                                     />
-                                </div>
+                               
                             </div>
 
                             <div className="containerBtnFormAddCepa">

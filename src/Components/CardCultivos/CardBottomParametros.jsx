@@ -6,7 +6,21 @@ import Iluminacion from '../../assets/Components/Icons/iluminacion.svg';
 import Temp from '../../assets/Components/Icons/temperatura.svg';
 import Ph from '../../assets/Components/Icons/ph.svg';
 
-function CardBottomParametros({iluminacion, temperatura, ph}) {
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert2';
+
+function CardBottomParametros({iluminacion, temperatura, ph, getControl_IA, getBomba, getLuz, getPh, getTemperatura}) {
+
+   const navigate = useNavigate();
+
+   const modifyParameters =  () => {
+     const id = localStorage.getItem('ID_Cultivo');
+   //mensaje de cultivo selec
+      //enviar po state getControl_IA, getBomba, getLuz, getPh, getTemperatura
+     navigate('/ParametrosCultivo' , { state: {getControl_IA, getBomba, getLuz, getPh, getTemperatura } });
+  };
+
+  
    return (
       <div className="containerParameters">
          <div className="contentTop">
@@ -42,7 +56,7 @@ function CardBottomParametros({iluminacion, temperatura, ph}) {
             </div>
          </div>
          <div className="contentBottom">
-            <button className='btnCardBottom'>Modificar ajustes</button>
+            <button className='btnCardBottom' onClick={modifyParameters}>Modificar ajustes</button>
          </div>
       </div>
    )

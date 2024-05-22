@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Tablecultivos.css';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert2';
 
 function TableCultivos({ data }) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +17,27 @@ function TableCultivos({ data }) {
     
     const goToCultivos= () => {
         navigate('/MisCultivos', { state: { datos: data } });
+    };
+
+    const setID_Cultivo = (ID, nombre, especie, origen, motivo) => {
+        //mensaje de cultivo selccionadoo
+        localStorage.setItem('ID_Cultivo', ID);
+        localStorage.setItem('Nombre_Cultivo', nombre);
+        localStorage.setItem('Especie_Cultivo', especie);
+        localStorage.setItem('Origen_Cultivo', origen);
+        localStorage.setItem('Motivo_Cultivo', motivo);
+        swal.fire({
+            title: 'Obteniendo datos...',
+            text: nombre + ' seleccionado',
+            icon: 'success',
+            timer: 1000,
+            showConfirmButton: false
+        });
+        //DESPUES DEL SWAL RECARGAR LA PAGINA
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+        
     };
   
 
@@ -43,7 +65,7 @@ function TableCultivos({ data }) {
                     </thead>
                     <tbody>
                         {filteredData.map((item, index) => (
-                            <tr className='trT2' key={item.ID}>
+                            <tr className='trT2' key={item.id} onClick={() => setID_Cultivo(item.id, item.nombre, item.nombre_cepa, item.origen, item.motivo)}>
                                 <td className='tdT2'>{index +1}</td>
                                 <td className='tdT2'>{item.nombre}</td>
                                 <td className='tdT2'>{item.nombre_cepa}</td>

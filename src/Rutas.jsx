@@ -19,6 +19,8 @@ import ScreenCicloLuzConfig from "./Views/MisCultivos/ConfigInicial/ScreenCicloL
 import ScreenConfigPh from "./Views/MisCultivos/ConfigInicial/ScreenPhConfig.jsx"
 import ScreenConfigTemp from "./Views/MisCultivos/ConfigInicial/ScreenTempConfig.jsx"
 
+import ParametrosCultivo from "./Views/MisCultivos/ParametrosCultivo.jsx"
+
 function Rutas() {
   return (
     <div className="Aplicacion">
@@ -35,6 +37,7 @@ function Rutas() {
         <Route path="/MisCultivos" element={ <MisCultivos /> } />
         <Route path="/AgregarCultivo" element={ <AgregarCultivo /> } />
         <Route path="/EditarCultivo" element={ <EditarCultivo /> } />
+        <Route path="/ParametrosCultivo" element={ <ParametrosCultivo /> } />
 
         <Route path="/Settings/Introduction" element={ <ScreenInicio /> } />
         <Route path="/Settings/Light" element={ <ScreenLuz /> } />

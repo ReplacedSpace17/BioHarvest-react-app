@@ -96,6 +96,7 @@ border: 1px solid var(--contorno);
 }
 
 .trT2 {
+    cursor: pointer;
     color: #373737;
     overflow: hidden;
     border: 0.7em solid #ffffff;
